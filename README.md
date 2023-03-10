@@ -1,7 +1,9 @@
 # SandboxRefreshHandler
 This is a solution that takes care of the 'invalid' and '@example.com' dilemma with user emails post sandbox refresh.
 
-With this solution, you can populate 'SandboxRefreshHandler' into the 'Apex Class' field when kicking off a sandbox refresh to ensure that the apex class runs after the refresh is complete.
+Usage: 
+1. create Internal_User__mdt records for each user you wish to sanitize email addresses on (and get rid of 'invalid' suffix) post refresh. Whjen creating these records, populate the User_Id__c field with the user's record Id from Production. Also populate the Email__c field with the user's email.
+2. When kicking off the sandbox refresh, populate 'SandboxRefreshHandler' into the 'Apex Class' field.
 
 Deploy to Salesforce
 ====================================
