@@ -17,8 +17,8 @@
         <name>CustomObject</name>
     </types>
     <types>
-		<members>Internal_User__mdt-Internal User Layout</members>
-		<name>Layout</name>
-	</types>
+	<members>Internal_User__mdt-Internal User Layout</members>
+	<name>Layout</name>
+    </types>
     <version>55.0</version>
 </Package>
