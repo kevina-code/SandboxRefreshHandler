@@ -1,5 +1,5 @@
 # SandboxRefreshHandler
-This is a solution that takes care of the 'invalid' and '@example.com' dilemma with user emails post sandbox refresh.
+This is a solution that takes care of the 'invalid' and '@example.com' dilemma with specified user emails post sandbox refresh.
 
 Usage: 
 1. Deploy metadata to Salesforce. 
