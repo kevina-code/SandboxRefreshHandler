@@ -1,10 +1,9 @@
 /**
- * Author: Kevin Antonioli
- * Created: 01.31.2022
- *
+ * Author     : Kevin Antonioli (braveitnow@pm.me)
  * Description: Scheduleable class to support SandboxRefreshHandler
- * Sanitizes internal user emails by initiating the removal of the .invalid suffix
- * Note: the need for a scheduleable class arises from nuances in the User table immediately following a completed sandbox refresh
+ *              Sanitizes internal user emails by initiating the removal of the .invalid suffix
+ *              Note: the need for a scheduleable class arises from nuances in the User table immediately following a completed sandbox refresh
+ * Created    : 01.31.2022
  *
  * Revisions:
  * Date : Name : Notes
@@ -22,9 +21,9 @@ public class SandboxSetupSchedulable implements Schedulable {
   /**
    * @description: retrieve internal user Ids and emails from the Internal User custom metadata type,
    *  and use those to remove removing '@example.com' and '.invalid' from the corresponding user records' email field.
-   * Note: for some reason, using a future here is more reliable
-   * @param null
-   * @return void
+   *  Note: for some reason, using a future here is more reliable
+   * @param   null
+   * @return  void
    */
   @future
   private static void sanitizeInternalUserEmails() {
@@ -73,8 +72,8 @@ public class SandboxSetupSchedulable implements Schedulable {
 
   /**
    * @description: finish method to abort the job once it has finished running its logic
-   * @param null
-   * @return void
+   * @param   null
+   * @return  void
    */
   private static void finish() {
     try {
