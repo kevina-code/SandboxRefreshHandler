@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Define internal users within this custom metadata type that need .invalid automatically removed from their email addresses post refresh.</description>
+    <fields>
+        <fullName>Email__c</fullName>
+        <description>User&apos;s email address</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>User&apos;s email address</inlineHelpText>
+        <label>Email</label>
+        <required>false</required>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>User_Id__c</fullName>
+        <description>18 character id of the user&apos;s record</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>18 character id of the user&apos;s record</inlineHelpText>
+        <label>User Id</label>
+        <length>18</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Internal User</label>
+    <pluralLabel>Internal Users</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>
