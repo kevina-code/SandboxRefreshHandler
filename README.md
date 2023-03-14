@@ -5,7 +5,7 @@ Tweak to taste. You can add additional logic to automate other post-refresh acti
 
 Usage: 
 1. Deploy metadata to Salesforce. 
-<a href="https://githubsfdeploy.herokuapp.com/app/githubdeploy/kevina-code/SandboxRefreshHandler?ref=master">
+<a href="https://githubsfdeploy.herokuapp.com">
   <img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png" alt="Deploy to Salesforce" />
 </a>
 
