@@ -9,7 +9,7 @@ Usage:
   <img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png" alt="Deploy to Salesforce" />
 </a>
 
-2. Create **Internal_User__mdt** records for each user you wish to sanitize email addresses on (and get rid of 'invalid' suffix) post refresh. Whjen creating these records, populate the **User_Id__c** field with the user's record Id from Production. Also populate the **Email__c** field with the user's email.
+2. Create **Internal_User__mdt** records in production for each user you wish to sanitize email addresses on (and get rid of 'invalid' suffix) post refresh. Whjen creating these records, populate the **User_Id__c** field with the user's record Id from Production. Also populate the **Email__c** field with the user's email.
 ![image](https://user-images.githubusercontent.com/124932501/224363432-78b62d72-6cf3-4be2-89a1-0a7f0a34f880.png)
 
 2. When kicking off a sandbox refresh, populate **SandboxRefreshHandler** into the **Apex Class** field.
