@@ -1,5 +1,5 @@
 # SandboxRefreshHandler
-This is a solution that takes care of the 'invalid' and '@example.com' dilemma with specified user emails post sandbox refresh.
+This is a solution that takes care of the 'invalid' and '@example.com' dilemma on specified user emails post sandbox refresh.
 
 Tweak to taste. You can add additional logic to automate other post-refresh activities as well.
 
