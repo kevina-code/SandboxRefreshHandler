@@ -13,4 +13,4 @@ Usage:
 ![image](https://user-images.githubusercontent.com/124932501/224363432-78b62d72-6cf3-4be2-89a1-0a7f0a34f880.png)
 
 2. When kicking off a sandbox refresh, populate **SandboxRefreshHandler** into the **Apex Class** field.
-![image](https://user-images.githubusercontent.com/124932501/224364237-7e8492cd-ae70-41b4-ad82-49a49eaa1606.png)
+![image](https://user-images.githubusercontent.com/124932501/227810176-3d1c676d-1d37-44f2-9af5-a7bf4912f793.png)
