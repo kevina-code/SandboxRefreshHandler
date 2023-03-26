@@ -27,45 +27,57 @@ public class SandboxSetupSchedulable implements Schedulable {
    */
   @future
   private static void sanitizeInternalUserEmails() {
-    // pull User SF Ids from Internal Users custom metadata type:
-    Map<Id, Internal_User__mdt> userIdToInternalUser = new Map<Id, Internal_User__mdt>();
-    for (
-      Internal_User__mdt internalUser : Test.isRunningTest()
-        ? new List<Internal_User__mdt>{
-            new Internal_User__mdt(
-              User_Id__c = UserInfo.getUserId(),
-              Email__c = 'test@abcdefg.com'
-            )
-          }
-        : [SELECT User_Id__c, Email__c FROM Internal_User__mdt]
-    ) {
-      if (
-        internalUser.User_Id__c != null && internalUser.User_Id__c instanceof Id
+    try {
+      // pull User SF Ids from Internal Users custom metadata type:
+      Map<Id, Internal_User__mdt> userIdToInternalUser = new Map<Id, Internal_User__mdt>();
+      for (
+        Internal_User__mdt internalUser : Test.isRunningTest()
+          ? new List<Internal_User__mdt>{
+              new Internal_User__mdt(
+                User_Id__c = UserInfo.getUserId(),
+                Email__c = 'test@abcdefg.com'
+              )
+            }
+          : [SELECT User_Id__c, Email__c FROM Internal_User__mdt]
       ) {
-        userIdToInternalUser.put(internalUser.User_Id__c, internalUser);
+        if (
+          internalUser.User_Id__c != null &&
+          internalUser.User_Id__c instanceof Id
+        ) {
+          userIdToInternalUser.put(internalUser.User_Id__c, internalUser);
+        }
       }
-    }
 
-    // query User object and cleanse emails (only for users defined as an internal user in the custom metadata type):
-    List<User> internalUsersToUpdate = new List<User>();
-    for (User user : [
-      SELECT Id, Email
-      FROM User
-      WHERE Id IN :userIdToInternalUser.keyset()
-    ]) {
-      if (userIdToInternalUser.containskey(user.Id)) {
-        Internal_User__mdt internalUserCmt = userIdToInternalUser.get(user.Id);
-        user.Email = internalUserCmt.Email__c;
-        user.isActive = true;
-        internalUsersToUpdate.add(user);
+      // query User object and cleanse emails (only for users defined as an internal user in the custom metadata type):
+      List<User> internalUsersToUpdate = new List<User>();
+      for (User user : [
+        SELECT Id, Email
+        FROM User
+        WHERE Id IN :userIdToInternalUser.keyset()
+      ]) {
+        if (userIdToInternalUser.containskey(user.Id)) {
+          Internal_User__mdt internalUserCmt = userIdToInternalUser.get(
+            user.Id
+          );
+          user.Email = internalUserCmt.Email__c;
+          user.isActive = true;
+          internalUsersToUpdate.add(user);
+        }
       }
-    }
 
-    // Update internal users defined in Internal_User__mdt custom metadata type:
-    if (!internalUsersToUpdate.isEmpty()) {
-      Database.SaveResult[] srList = Database.update(
-        internalUsersToUpdate,
-        false
+      // Update internal users defined in Internal_User__mdt custom metadata type:
+      if (!internalUsersToUpdate.isEmpty()) {
+        Database.SaveResult[] srList = Database.update(
+          internalUsersToUpdate,
+          false
+        );
+      }
+    } catch (Exception e) {
+      System.debug(
+        'SandboxSetupSchedulable.sanitizeInternalUserEmails exception: ' +
+        e.getMessage() +
+        ', ' +
+        e.getStackTraceString()
       );
     }
   }
